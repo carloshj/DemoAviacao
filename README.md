@@ -1,5 +1,7 @@
 # DemoAviacao
 
+Feito em Visual Studio 2017 (15.9.2)
+
 Passo a passo de uso da aplicação:
 
 1) Entrar no menu "Parâmetros" para incluir os parametros (Rotas, DatasSaidas e Idade).
