@@ -1,0 +1,53 @@
+﻿@model DemoAviacao.Models.VoosModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Adicionar passageiros ao voo</h1>
+<p><strong>Voo#:</strong> @Model.ID</p>
+<p><strong>Rota:</strong> @Model.RotaVoo.Origem / @Model.RotaVoo.Destino</p>
+<p><strong>Data Saida:</strong> @Model.DataSaidaVoo.DataSaida.ToString("dd/MM/yyyy HH:mm")</p>
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("AddPassageiro", "Voos", FormMethod.Post, new { id = "frmAddPass", @class = "form-horizontal" }))
+        {
+            <input type="text" class="form-control input-sm hidden" id="vooid" name="vooid" hidden="hidden" value="@Model.ID">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="rota">Nome do Passageiro:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control input-sm" id="nomepassageiro" name="nomepassageiro" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="datasaida">Idade do Passageiro:</label>
+                <div class="col-sm-10">
+                    <input type="number" min="0" class="form-control input-sm" id="idadepassageiro" name="idadepassageiro" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default" name="action" value="add">Incluir</button>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+<div class="row  @(ViewBag.MsgSuccess == null ? "hidden" : "")">
+    <div class="col-sm-6">
+        <div class="alert alert-dismissible alert-info">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            @ViewBag.MsgSuccess
+        </div>
+    </div>
+</div>
+
+<div class="row  @(ViewBag.Msg == null ? "hidden" : "")">
+    <div class="col-sm-6">
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            @ViewBag.Msg
+        </div>
+    </div>
+</div>
+

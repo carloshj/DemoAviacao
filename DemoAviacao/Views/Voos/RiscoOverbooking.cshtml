@@ -1,0 +1,48 @@
+﻿@model IEnumerable<DemoAviacao.Models.VoosModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Risco de Overbooking</h1>
+<div class="row">
+    <div class="col-md-12">
+        <table id="DataTable" class="table table-hover table-bordered table-sm">
+            @if (Model.Count() == 0)
+            {
+                <tbody>
+                    <tr>
+                        Nenhum voo cadastrado.
+                    </tr>
+                </tbody>
+            }
+            else
+            {
+                <thead class="text-center">
+                    <tr>
+                        <th class="text-center"><strong>ID</strong></th>
+                        <th class="text-center"><strong>DataSaida</strong></th>
+                        <th class="text-center"><strong>Rota</strong></th>
+                        <th class="text-center"><strong>% Estimada Overbooking</strong></th>
+                        <th class="text-center"><strong>Capacidade Normal</strong></th>
+                        <th class="text-center"><strong>Capacidade Com Overbooking</strong></th>
+                        <th class="text-center"><strong>Assentos Vendidos</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@Html.DisplayFor(modelItem => item.ID)</td>
+                            <td class="text-center">@item.DataSaidaVoo.DataSaida.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td class="text-center">@item.RotaVoo.Origem / @item.RotaVoo.Destino</td>
+                            <td class="text-center">@Html.DisplayFor(modelItem => @item.RiscoOver)%</td>
+                            <td class="text-center">@Html.DisplayFor(modelItem => @item.CapacidadeNormal)</td>
+                            <td class="text-center">@Html.DisplayFor(modelItem => @item.CapacidadeOver)</td>
+                            <td class="text-center">@item.Passageiros.Count()</td>
+                        </tr>
+                    }
+                </tbody>
+            }
+        </table>
+    </div>
+</div>
+

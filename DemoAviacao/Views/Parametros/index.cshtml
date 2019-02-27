@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Parâmetros</h1>
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Rotas</h3>
+        @{ Html.RenderAction("_PartialRotas", "Parametros", null); }
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Data Saida</h3>
+        @{ Html.RenderAction("_PartialDataSaida", "Parametros", null); }
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Idade</h3>
+        @{ Html.RenderAction("_PartialIdade", "Parametros", null); }
+    </div>
+</div>
+
+
+
+

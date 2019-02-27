@@ -1,0 +1,54 @@
+﻿
+@model IEnumerable<DemoAviacao.Models.DataSaidaModel>
+<div class="row">
+    <div class="col-sm-4">
+        <table id="DataTable" class="table table-hover table-bordered table-sm">
+            @if (Model.Count() == 0)
+            {
+                <tbody>
+                    <tr>
+                        Nenhuma data de saída cadastrada.
+                    </tr>
+                </tbody>
+            }
+            else
+            {
+                <thead class="text-center">
+                    <tr>
+                        <th class="text-center"><strong>Data Saida</strong></th>
+                        <th class="text-center"><strong>% Comparecimento</strong></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        using (Html.BeginForm("_PartialDataSaida", "Parametros", FormMethod.Post, null))
+                        {
+                            <tr>
+                                <td class="text-center">@item.DataSaida.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td class="text-center">@Html.DisplayFor(modelItem => item.ProbabilidadeComparecer)%</td>
+                                <td class="text-center"><button type="submit" class="btn btn-sm btn-danger" name="action" value="excluir"><span class="glyphicon glyphicon-remove"></span></button> <input type="text" class="form-control input-sm hidden" id="itemid" name="itemid" hidden="hidden" value="@item.ID"></td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            }
+        </table>    
+    </div>
+    <div class="col-sm-8">
+        @using (Html.BeginForm("_PartialDataSaida", "Parametros", FormMethod.Post, new { id = "frmDataSaida", @class = "form-inline" }))
+        {
+            <div class="form-group">
+                <label for="datasaida">Data Saida:</label>
+                <input type="date" class="form-control input-sm" id="datasaida" name="datasaida" required>
+                <input type="time" class="form-control input-sm" id="time" name="time" required>
+            </div>
+            <div class="form-group">
+                <label for="probabilidade">% Comparecimento:</label>
+                <input type="number" max="100" min="1" class="form-control input-sm" id="probabilidade" name="probabilidade" required>
+            </div>
+            <button type="submit" class="btn btn-default" name="action" value="add">Incluir</button>
+        }
+    </div>
+</div>
