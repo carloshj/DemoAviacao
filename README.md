@@ -1,6 +1,7 @@
 # DemoAviacao
 
 Feito em Visual Studio 2017 (15.9.2)
+Caso aparece o erro "Could not find a part of the path … bin\roslyn\csc.exe"  fazer um clean e depois rebuild.
 
 Passo a passo de uso da aplicação:
 
