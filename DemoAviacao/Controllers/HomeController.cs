@@ -13,31 +13,6 @@ namespace DemoAviacao.Controllers
         
         public ActionResult Index()
         {
-            
-            //RotaModel rotaModel = new RotaModel()
-            //{
-            //    Destino = "DDK",
-            //    Origem = "ODL",
-            //    ProbabilidadeComparecer = 90
-            //};
-            //Util.RotaRep.Add(rotaModel);
-
-
-            //IdadeModel idadeModel = new IdadeModel()
-            //{
-            //    Idade=20,
-            //    ProbabilidadeComparecer = 90
-            //};
-            //Util.IdadeRep .Add(idadeModel);
-
-
-            //DataSaidaModel dataSaidaModel = new DataSaidaModel()
-            //{
-            //    DataSaida= DateTime.Now,
-            //    ProbabilidadeComparecer = 90
-            //};
-            //Util.DataSaidaRep.Add(dataSaidaModel);
-
             return View();
         }
 

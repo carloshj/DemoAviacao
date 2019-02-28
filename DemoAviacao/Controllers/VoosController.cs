@@ -33,7 +33,7 @@ namespace DemoAviacao.Controllers
 
                 VoosModel item = new VoosModel()
                 {
-                    RotaVoo = Util.RotaRep.Where(a => a.ID == Convert.ToInt32(strIdData[0])).First(),
+                    RotaVoo = Util.RotaRep.Where(a => a.ID == Convert.ToInt32(strIdRota[0])).First(),
                     DataSaidaVoo = Util.DataSaidaRep.Where(a => a.ID == Convert.ToInt32(strIdData[0])).First()
                 };
 
